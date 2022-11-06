@@ -1,0 +1,50 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+  <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+  <id>com.github.encrypt</id>
+
+  <!-- Public plugin name should be written in Title Case.
+       Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+  <name>Encrypt</name>
+
+  <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+  <vendor email="wangfengqii2010@163.com" url="https://www.yourcompany.com"/>
+
+  <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+       Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+       Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+  <description><![CDATA[sample tool for md5 base64 sha1 sha256 sha512 encryption]]></description>
+
+  <!-- Product and plugin compatibility requirements.
+       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <!-- Extension points defined by the plugin.
+       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+  <extensions defaultExtensionNs="com.intellij">
+    <notificationGroup id="com.github.encrypt" displayType="BALLOON"/>
+  </extensions>
+
+  <actions>
+    <group id="Encrypt.file.PopupGroup" popup="true" text="File Encrypt">
+      <separator/>
+      <add-to-group group-id="ProjectViewPopupMenu" anchor="after"
+        relative-to-action="ProjectViewPopupMenuRefactoringGroup"/>
+      <action id="FileMd5EncryptAction" class="com.github.encrypt.file.Md5EncryptAction" text="File -> Md5"/>
+      <action id="FileSha1EncryptAction" class="com.github.encrypt.file.Sha1EncryptAction" text="File -> Sha1"/>
+      <action id="FileSha256EncryptAction" class="com.github.encrypt.file.Sha256EncryptAction" text="File -> Sha256"/>
+      <action id="FileSha512EncryptAction" class="com.github.encrypt.file.Sha512EncryptAction" text="File -> Sha512"/>
+      <action id="FileBase64EncryptAction" class="com.github.encrypt.file.Base64EncryptAction" text="File -> Base64"/>
+    </group>
+    <group id="Encrypt.text.PopupGroup" popup="true" text="Text Encrypt">
+      <separator/>
+      <add-to-group group-id="EditorPopupMenu" anchor="after"
+        relative-to-action="EditorToggleColumnMode"/>
+      <action id="TextMd5EncryptAction" class="com.github.encrypt.text.Md5EncryptAction" text="Text -> Md5"/>
+      <action id="TextSha1EncryptAction" class="com.github.encrypt.text.Sha1EncryptAction" text="Text -> Sha1"/>
+      <action id="TextSha256EncryptAction" class="com.github.encrypt.text.Sha256EncryptAction" text="Text -> Sha256"/>
+      <action id="TextSha512EncryptAction" class="com.github.encrypt.text.Sha512EncryptAction" text="Text -> Sha512"/>
+      <action id="TextBase64EncryptAction" class="com.github.encrypt.text.Base64EncryptAction" text="Text -> Base64"/>
+    </group>
+  </actions>
+</idea-plugin>
