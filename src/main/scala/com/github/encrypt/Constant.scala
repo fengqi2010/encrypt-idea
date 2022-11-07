@@ -1,7 +1,7 @@
 package com.github.encrypt
 
 import com.intellij.codeInsight.editorActions.TextBlockTransferable
-import com.intellij.notification.{EventLog, Notification, NotificationType, Notifications}
+import com.intellij.notification.{Notification, NotificationType, Notifications}
 import com.intellij.openapi.actionSystem.{AnAction, AnActionEvent}
 import com.intellij.openapi.ide.CopyPasteManager
 
@@ -28,8 +28,7 @@ object Constant {
     notification.addAction(new AnAction("Copy to ClipBoard") {
       override def actionPerformed(e: AnActionEvent): Unit = {
         CopyPasteManager.getInstance.setContents(new TextBlockTransferable(res._2, Collections.emptyList, null))
-        EventLog.toggleLog(
-          e.getProject,
+        Notifications.Bus.notify(
           new Notification(Constant.groupId, Constant.title, "Copied", NotificationType.INFORMATION)
         )
         notification.expire()
