@@ -10,7 +10,7 @@ import java.io.File
 abstract class AbstractFileEncryptAction extends AnAction {
   final override def actionPerformed(e: AnActionEvent): Unit = {
     val virtualFile = e.getData(CommonDataKeys.VIRTUAL_FILE)
-    if (virtualFile == null) {
+    if (virtualFile == null || virtualFile.isDirectory) {
       Notifications.Bus.notify(
         new Notification(Constant.groupId, Constant.title, "Please select a file", NotificationType.WARNING)
       )
