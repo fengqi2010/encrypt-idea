@@ -16,8 +16,8 @@ abstract class AbstractTextEncryptAction extends AnAction {
     }
     val text = editor.getSelectionModel.getSelectedText
     val res = encrypt(text.getBytes)
-    val context = "%s = %s".format(res._1, res._2)
-    Constant.copyToClipBoard(context)
+    val format = "%s = %s"
+    Constant.copyToClipBoard(format, res)
   }
 
   def encrypt(bytes: Array[Byte]): (String, String)

@@ -13,21 +13,21 @@ object Constant {
 
   val title = "Encrypt"
 
-  def copyToClipBoard(context: String): Unit = {
+  def copyToClipBoard(format: String, res: (String, String)): Unit = {
     var notification: Notification = null
-    if (context.length > 64) {
+    if (res._2.length > 64) {
       notification = new Notification(
         Constant.groupId,
         Constant.title,
-        context.substring(0, 65) + "...",
+        format.format(res._1, res._2.substring(0, 65) + "..."),
         NotificationType.INFORMATION
       )
     } else {
-      notification = new Notification(Constant.groupId, Constant.title, context, NotificationType.INFORMATION)
+      notification = new Notification(Constant.groupId, Constant.title, res._2, NotificationType.INFORMATION)
     }
     notification.addAction(new AnAction("Copy to ClipBoard") {
       override def actionPerformed(e: AnActionEvent): Unit = {
-        CopyPasteManager.getInstance.setContents(new TextBlockTransferable(context, Collections.emptyList, null))
+        CopyPasteManager.getInstance.setContents(new TextBlockTransferable(res._2, Collections.emptyList, null))
         EventLog.toggleLog(
           e.getProject,
           new Notification(Constant.groupId, Constant.title, "Copied", NotificationType.INFORMATION)

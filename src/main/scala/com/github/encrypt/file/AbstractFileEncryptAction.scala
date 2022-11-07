@@ -19,8 +19,8 @@ abstract class AbstractFileEncryptAction extends AnAction {
     val path = virtualFile.getPath
     val bytes = FileUtils.readFileToByteArray(new File(path))
     val res = encrypt(bytes)
-    val context = "%s (%s) = %s".format(res._1, path.substring(path.lastIndexOf("/") + 1), res._2)
-    Constant.copyToClipBoard(context)
+    val format = "%s (" + path.substring(path.lastIndexOf("/") + 1) + ") = %s"
+    Constant.copyToClipBoard(format, res)
   }
 
   def encrypt(bytes: Array[Byte]): (String, String)
