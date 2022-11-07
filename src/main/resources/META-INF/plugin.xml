@@ -1,5 +1,5 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
-<idea-plugin>
+<idea-plugin require-restart="false">
   <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
   <id>com.github.encrypt</id>
 
@@ -35,6 +35,7 @@
       <action id="FileSha256EncryptAction" class="com.github.encrypt.file.Sha256EncryptAction" text="File -> Sha256"/>
       <action id="FileSha512EncryptAction" class="com.github.encrypt.file.Sha512EncryptAction" text="File -> Sha512"/>
       <action id="FileBase64EncryptAction" class="com.github.encrypt.file.Base64EncryptAction" text="File -> Base64"/>
+      <separator/>
     </group>
     <group id="Encrypt.text.PopupGroup" popup="true" text="Text Encrypt">
       <separator/>
@@ -45,6 +46,7 @@
       <action id="TextSha256EncryptAction" class="com.github.encrypt.text.Sha256EncryptAction" text="Text -> Sha256"/>
       <action id="TextSha512EncryptAction" class="com.github.encrypt.text.Sha512EncryptAction" text="Text -> Sha512"/>
       <action id="TextBase64EncryptAction" class="com.github.encrypt.text.Base64EncryptAction" text="Text -> Base64"/>
+      <separator/>
     </group>
   </actions>
 </idea-plugin>

@@ -1,11 +1,11 @@
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.9.0"
+    id("org.jetbrains.intellij") version "1.8.0"
     id("scala")
 }
 
 group = "com.github"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -35,7 +35,6 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("213")
     }
 
     signPlugin {
